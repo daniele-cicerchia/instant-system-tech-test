@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Java technical test
+  contact:
+    email: daniele.cicerchia@gmail.com
+  version: '1.0'
+
+paths:
+
+  /parking/search:
+
+    get:
+      tags:
+        - Search for parking
+      summary: Find parkings around the provided location
+      description: Returns a filtered list of parkings
+      operationId: searchForParking
+      parameters:
+        - in: query
+          name: lat
+          description: current latitude
+          required: true
+          schema:
+            type: number
+            format: double
+            minimum: -90.0
+            maximum: 90.0
+        - in: query
+          name: lon
+          description: current longitude
+          required: true
+          schema:
+            type: number
+            format: double
+            minimum: -180.0
+            maximum: 180.0
+        - in: query
+          name: maxDistance
+          description: max search distance in meters
+          required: false
+          schema:
+            type: number
+            format: double
+            minimum: 0.0
+            maximum: 100.0
+            default: 0.5
+        - in: query
+          name: allResults
+          description: requests all the results, not filtered per availability
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Parking'
+        '400':
+          description: Invalid input supplied
+        '404':
+          description: No parking found
+
+components:
+  schemas:
+    Parking:
+      type: object
+      properties:
+        id:
+          type: string
+          description: internal parking id
+        name:
+          type: string
+          description: parking name
+        lon:
+          type: number
+          format: double
+          description: longitude of the parking
+        lat:
+          type: number
+          format: double
+          description: latitude of the parking
+        capacity:
+          type: number
+          description: current maximum parking places capacity
+        availability:
+          type: number
+          description: available parking places
+        distance:
+          type: number
+          format: double
+          description: distance in meters from current position

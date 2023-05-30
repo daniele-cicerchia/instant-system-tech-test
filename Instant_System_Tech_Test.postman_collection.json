@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "2a7d7b0d-4cef-49a0-9dd4-3bf12ffb1243",
+		"name": "Instant Systems Tech Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4802339"
+	},
+	"item": [
+		{
+			"name": "Poitiers Parking List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://data.grandpoitiers.fr/api/records/1.0/search/?dataset=mobilite-parkings-grand-poitiers-donnees-metiers&rows=1000&facet=nom_du_parking&facet=zone_tarifaire&facet=statut2&facet=statut3",
+					"protocol": "https",
+					"host": [
+						"data",
+						"grandpoitiers",
+						"fr"
+					],
+					"path": [
+						"api",
+						"records",
+						"1.0",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "dataset",
+							"value": "mobilite-parkings-grand-poitiers-donnees-metiers"
+						},
+						{
+							"key": "rows",
+							"value": "1000"
+						},
+						{
+							"key": "facet",
+							"value": "nom_du_parking"
+						},
+						{
+							"key": "facet",
+							"value": "zone_tarifaire"
+						},
+						{
+							"key": "facet",
+							"value": "statut2"
+						},
+						{
+							"key": "facet",
+							"value": "statut3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Poitiers Parking Availability",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://data.grandpoitiers.fr/api/records/1.0/search/?dataset=mobilites-stationnement-des-parkings-en-temps-reel&facet=nom&rows=1000",
+					"protocol": "https",
+					"host": [
+						"data",
+						"grandpoitiers",
+						"fr"
+					],
+					"path": [
+						"api",
+						"records",
+						"1.0",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "dataset",
+							"value": "mobilites-stationnement-des-parkings-en-temps-reel"
+						},
+						{
+							"key": "facet",
+							"value": "nom"
+						},
+						{
+							"key": "rows",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Example Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/parking/search?lat=46.582772&maxDistanceKm=500.0",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"parking",
+						"search"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "46.582772"
+						},
+						{
+							"key": "lon",
+							"value": "0.354717",
+							"disabled": true
+						},
+						{
+							"key": "maxDistanceKm",
+							"value": "500.0"
+						},
+						{
+							"key": "allResults",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
